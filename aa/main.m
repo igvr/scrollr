@@ -5,16 +5,14 @@
 #include <AppKit/AppKit.h>
 #include <AppKit/NSHapticFeedback.h>
 
-//NSHapticFeedbackPerformer* performer;
-
 void performHapticFeedback(void) {
     [[NSHapticFeedbackManager defaultPerformer] performFeedbackPattern:NSHapticFeedbackPatternGeneric performanceTime:NSHapticFeedbackPerformanceTimeNow];
 }
 
 int accumul = 0;
 void goBrr(int delta){
-    accumul+=delta;
-    if(accumul>5000){
+    accumul+=abs(delta);
+    if(accumul>35){
         accumul=0;
         performHapticFeedback();
     }
@@ -51,6 +49,7 @@ const int speed = 20;
 
 static int previd = 0;
 static CGPoint freezPoint;
+bool scrolling = false;
 
 int callback(int device, Finger *data, int nFingers, double timestamp, int frame) {
     for (int i=0; i<nFingers; i++) {
@@ -70,10 +69,15 @@ int callback(int device, Finger *data, int nFingers, double timestamp, int frame
                f->identifier, f->state, f->foo3, f->foo4,
                f->size, f->unk2);
         
-        
-      
-        
         if(i==0 && f->normalized.pos.x > 0.97 && f->normalized.pos.y > 0.1 && f->angle <= 95) {
+            if(!scrolling){
+                CGEventRef event = CGEventCreate(NULL);
+                CGPoint point = CGEventGetLocation(event);
+                CFRelease(event);
+                freezPoint = point;
+                scrolling=true;
+            }
+            goBrr(f->normalized.vel.y * speed);
 
 //            CFStringRef propertyString = CFStringCreateWithCString(NULL, "SetsCursorInBackground", kCFStringEncodingMacRoman);
 //            CGSSetConnectionProperty(_CGSDefaultConnection(), _CGSDefaultConnection(), propertyString, kCFBooleanTrue);
@@ -87,40 +91,32 @@ int callback(int device, Finger *data, int nFingers, double timestamp, int frame
 //            if (err == CGEventNoErr) {
 //                NSLog(@"Could not disable mouse movement, CGAssociateMouseAndMouseCursorPosition returned %d\n", err);
 //            }
-            
 
-            
-            CGPoint point = freezPoint;
-            point.x = point.x - (f->normalized.pos.x * speed);
-            point.y = point.y - (f->normalized.pos.y * speed);
 
             // freez
             CGEventRef move = CGEventCreateMouseEvent(NULL, kCGEventMouseMoved,
-                                                      point,
+                                                      freezPoint,
                                                       kCGMouseButtonLeft);
-            
-//            calculateDeltas(&move, point);
-            goBrr(point.y);
-            
             CGEventPost(kCGSessionEventTap, move);
             CFRelease(move);
+            
             // scroll
-//            CGEventRef event;
-            CGEventRef event = CGEventCreate(NULL);
-            event = CGEventCreateScrollWheelEvent(NULL, kCGScrollEventUnitPixel, 2, (f->normalized.vel.y * speed), 0);
-            CGEventPost(kCGHIDEventTap, event);
-            
-            CFRelease(event);
+            CGEventRef event3 = CGEventCreateScrollWheelEvent(NULL, kCGScrollEventUnitPixel, 2, (f->normalized.vel.y * speed), 0);
+            CGEventPost(kCGHIDEventTap, event3);
+            CFRelease(event3);
         } else {
-            CGEventRef event = CGEventCreate(NULL);
-            
-            
-            CGPoint point = CGEventGetLocation(event);
-            CFRelease(event);
-            freezPoint = point;
+            if(scrolling){
+                scrolling=false;
+            }
+//            CGEventRef event = CGEventCreate(NULL);
+//
+//
+//            CGPoint point = CGEventGetLocation(event);
+//            CFRelease(event);
+//            freezPoint = point;
         }
     }
-    printf("\n");
+//    printf("\n");
     
     
     return 0;
