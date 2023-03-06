@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		081DCBAE29B56E5300580A7E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081DCBAD29B56E5300580A7E /* AppKit.framework */; };
 		8DA606C922D86A21008703E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA606C822D86A21008703E8 /* main.m */; };
+		8DA606D122D86A7E008703E8 /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA606D022D86A7E008703E8 /* MultitouchSupport.framework */; };
+		8DA606D322D86F9C008703E8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA606D222D86F9C008703E8 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +26,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8DA606C522D86A21008703E8 /* aa */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = aa; sourceTree = BUILT_PRODUCTS_DIR; };
+		081DCBAB29B56DCC00580A7E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		081DCBAD29B56E5300580A7E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		8DA606C522D86A21008703E8 /* scrollr */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = scrollr; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA606C822D86A21008703E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8DA606D022D86A7E008703E8 /* MultitouchSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultitouchSupport.framework; path = ../../../../System/Library/PrivateFrameworks/MultitouchSupport.framework; sourceTree = "<group>"; };
+		8DA606D222D86F9C008703E8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +39,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				081DCBAE29B56E5300580A7E /* AppKit.framework in Frameworks */,
+				8DA606D322D86F9C008703E8 /* CoreGraphics.framework in Frameworks */,
+				8DA606D122D86A7E008703E8 /* MultitouchSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,13 +53,14 @@
 			children = (
 				8DA606C722D86A21008703E8 /* aa */,
 				8DA606C622D86A21008703E8 /* Products */,
+				8DA606CF22D86A7E008703E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		8DA606C622D86A21008703E8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DA606C522D86A21008703E8 /* aa */,
+				8DA606C522D86A21008703E8 /* scrollr */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -62,12 +73,23 @@
 			path = aa;
 			sourceTree = "<group>";
 		};
+		8DA606CF22D86A7E008703E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				081DCBAD29B56E5300580A7E /* AppKit.framework */,
+				081DCBAB29B56DCC00580A7E /* Cocoa.framework */,
+				8DA606D222D86F9C008703E8 /* CoreGraphics.framework */,
+				8DA606D022D86A7E008703E8 /* MultitouchSupport.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8DA606C422D86A21008703E8 /* aa */ = {
+		8DA606C422D86A21008703E8 /* scrollr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8DA606CC22D86A21008703E8 /* Build configuration list for PBXNativeTarget "aa" */;
+			buildConfigurationList = 8DA606CC22D86A21008703E8 /* Build configuration list for PBXNativeTarget "scrollr" */;
 			buildPhases = (
 				8DA606C122D86A21008703E8 /* Sources */,
 				8DA606C222D86A21008703E8 /* Frameworks */,
@@ -77,9 +99,9 @@
 			);
 			dependencies = (
 			);
-			name = aa;
+			name = scrollr;
 			productName = aa;
-			productReference = 8DA606C522D86A21008703E8 /* aa */;
+			productReference = 8DA606C522D86A21008703E8 /* scrollr */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -88,7 +110,7 @@
 		8DA606BD22D86A21008703E8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1420;
 				ORGANIZATIONNAME = igvar;
 				TargetAttributes = {
 					8DA606C422D86A21008703E8 = {
@@ -96,19 +118,20 @@
 					};
 				};
 			};
-			buildConfigurationList = 8DA606C022D86A21008703E8 /* Build configuration list for PBXProject "aa" */;
+			buildConfigurationList = 8DA606C022D86A21008703E8 /* Build configuration list for PBXProject "scrollr" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 8DA606BC22D86A21008703E8;
 			productRefGroup = 8DA606C622D86A21008703E8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DA606C422D86A21008703E8 /* aa */,
+				8DA606C422D86A21008703E8 /* scrollr */,
 			);
 		};
 /* End PBXProject section */
@@ -151,6 +174,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -159,6 +183,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -209,6 +234,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -217,6 +243,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -237,23 +264,37 @@
 		8DA606CD22D86A21008703E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Debug;
 		};
 		8DA606CE22D86A21008703E8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8DA606C022D86A21008703E8 /* Build configuration list for PBXProject "aa" */ = {
+		8DA606C022D86A21008703E8 /* Build configuration list for PBXProject "scrollr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8DA606CA22D86A21008703E8 /* Debug */,
@@ -262,7 +303,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8DA606CC22D86A21008703E8 /* Build configuration list for PBXNativeTarget "aa" */ = {
+		8DA606CC22D86A21008703E8 /* Build configuration list for PBXNativeTarget "scrollr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8DA606CD22D86A21008703E8 /* Debug */,
